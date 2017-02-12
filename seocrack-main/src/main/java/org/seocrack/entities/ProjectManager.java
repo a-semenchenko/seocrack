@@ -1,6 +1,7 @@
 package org.seocrack.entities;
 
 import lombok.Data;
+import org.seocrack.entities.enums.Role;
 
 import javax.persistence.Entity;
 import java.util.List;
@@ -11,5 +12,6 @@ import java.util.List;
 @Data
 @Entity
 public class ProjectManager {
+    Role role;
     private List<Project> projects;
 }
