@@ -29,7 +29,6 @@ public class DocumentProcessor {
         Page page = new Page();
 
         page.setTitle(document.title());
-        //page.setDescription(document.getElementsByTag("description"));
 
         return page;
     }
