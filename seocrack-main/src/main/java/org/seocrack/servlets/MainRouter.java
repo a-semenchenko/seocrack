@@ -1,4 +1,4 @@
-package org.seocrack;
+package org.seocrack.servlets;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
