@@ -1,4 +1,4 @@
-package org.seocrack.entities;
+package org.seocrack.crawler.entities;
 
 import lombok.Data;
 

@@ -23,6 +23,6 @@ public class Page {
     private boolean indexGoogle;
     private Calendar yandexCache;
     private Calendar googleCache;
-    private List<Link> inLinks;
-    private List<Link> outLinks;
+    //private List<Link> inLinks;
+    //private List<Link> outLinks;
 }

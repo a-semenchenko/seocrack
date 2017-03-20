@@ -1,7 +1,6 @@
 package org.seocrack.crawler.entities;
 
 import lombok.Data;
-import org.seocrack.entities.Link;
 
 import javax.persistence.Entity;
 import java.util.List;

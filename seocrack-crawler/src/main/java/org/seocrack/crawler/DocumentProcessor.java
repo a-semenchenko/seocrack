@@ -4,7 +4,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.seocrack.crawler.entities.Page;
-import org.seocrack.entities.Link;
+import org.seocrack.crawler.entities.Link;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ public class DocumentProcessor {
 
     /**
      * Обработчик ссылок
-     * @return коллекция объектов {@link org.seocrack.entities.Link}
+     * @return коллекция объектов {@link Link}
      */
     public List<Link> processLinks() {
         Elements elements = document.getElementsByTag("a");
