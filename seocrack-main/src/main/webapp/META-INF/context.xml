@@ -4,8 +4,8 @@
     <!-- url="jdbc:h2:tcp://localhost/trainingDS" -->
     <Resource name="jdbc/seocrack" auth="Container"
               type="javax.sql.DataSource" driverClassName="org.h2.Driver"
-              url="jdbc:h2:tcp://localhost/~/test"
-              username="admin" password=""
+              url="jdbc:h2:tcp://localhost/~/seo"
+              username="seo" password=""
               maxActive="10" maxIdle="3"
               initialSize="1"
               removeAbandoned="true"
