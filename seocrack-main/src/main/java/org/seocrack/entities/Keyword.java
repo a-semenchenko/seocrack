@@ -3,6 +3,7 @@ package org.seocrack.entities;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.util.Calendar;
 
@@ -13,6 +14,7 @@ import java.util.Calendar;
 @Data
 @Entity
 public class Keyword {
+    @Id
     private long id;
     private int position;
     private Calendar checkDate;

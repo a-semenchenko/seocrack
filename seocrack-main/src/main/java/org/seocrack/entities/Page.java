@@ -3,6 +3,7 @@ package org.seocrack.entities;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Calendar;
 import java.util.List;
 
@@ -10,8 +11,8 @@ import java.util.List;
  * Created by meqqee on 30.01.2017.
  */
 @Data
-@Entity
 public class Page {
+    @Id
     private long id;
     private List<Keyword> relevantKeywords;
     private String url;

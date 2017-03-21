@@ -23,7 +23,7 @@ public class Project {
       joinColumns = @JoinColumn(name = "projectId"),
       inverseJoinColumns = @JoinColumn(name = "seo")
     )
-    private Set<SeoSpecialist> seoSpecialistList;
+    private Set<SeoSpecialist> seoSpecialist;
     @ManyToMany
     @JoinTable(
       name = "jndProjectManager",

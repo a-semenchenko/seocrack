@@ -12,7 +12,7 @@ import java.util.Set;
  */
 @Data
 @Entity
-public class Customer {
+public class Customer extends User {
     private String companyName;
     @OneToMany(mappedBy = "customer")
     private Set<Project> projects;

@@ -4,6 +4,7 @@ import lombok.Data;
 import org.seocrack.entities.enums.Role;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import java.util.List;
 
 /**
@@ -11,6 +12,7 @@ import java.util.List;
  */
 @Data
 @Entity
-public class SeoSpecialist {
+public class SeoSpecialist extends User {
+    @ManyToMany(mappedBy = "seoSpecialist")
     private List<Project> projects;
 }

@@ -6,15 +6,17 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by a.semenchenko on 20.03.2017.
+ * Created by a.semenchenko on 21.03.2017.
  */
-public class MainRouter extends HttpServlet {
+@WebServlet(urlPatterns = "/login")
+public class LoginServlet extends HttpServlet {
 
   @Autowired
   private UserSession userSession;
@@ -25,18 +27,21 @@ public class MainRouter extends HttpServlet {
     SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
   }
 
-  public MainRouter() {
+  public LoginServlet() {
     super();
-    // TODO Auto-generated constructor stub
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     if (userSession.getLoggedUser() == null)
-      response.sendRedirect("login");
+      request.getRequestDispatcher("login.jsp").forward(request, response);
     else
       response.sendRedirect("index.jsp");
   }
 
-  protected void goPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String login = request.getParameter("login");
+    String password = request.getParameter("password");
+
+
   }
 }
