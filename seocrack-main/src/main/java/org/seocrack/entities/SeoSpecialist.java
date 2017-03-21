@@ -12,6 +12,5 @@ import java.util.List;
 @Data
 @Entity
 public class SeoSpecialist {
-    Role role;
     private List<Project> projects;
 }
