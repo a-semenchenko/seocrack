@@ -1,8 +1,11 @@
 package org.seocrack.entities;
 
+import com.sun.org.apache.xpath.internal.compiler.Keywords;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -34,5 +37,9 @@ public class Project {
     @ManyToOne
     private Customer customer;
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Keyword> keywords;
+    private List<Keyword> keywords = new ArrayList<Keyword>();
+
+    public void setKeywords(ArrayList<Keywords> keywords) {
+        //todo подумать над реализацией
+    }
 }
