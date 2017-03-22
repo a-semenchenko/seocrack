@@ -1,5 +1,6 @@
 package org.seocrack.services;
 
+import org.seocrack.dto.ResultOutput;
 import org.seocrack.entities.Keyword;
 import org.seocrack.entities.Project;
 
@@ -10,11 +11,11 @@ import java.util.List;
  * Created by meqqee on 30.01.2017.
  */
 public class DBProjectManager implements ProjectManager {
-    public Project addProject(String region, String url, int budget) {
+    public ResultOutput addProject(String region, String url, int budget) {
         return null;
     }
 
-    public Project deleteProject(long id) {
+    public ResultOutput deleteProject(long id) {
         return null;
     }
 

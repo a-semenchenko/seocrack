@@ -1,5 +1,6 @@
 package org.seocrack.services;
 
+import org.seocrack.dto.ResultOutput;
 import org.seocrack.entities.Keyword;
 import org.seocrack.entities.Project;
 
@@ -15,16 +16,16 @@ public interface ProjectManager {
      * @param region регион продвижения
      * @param url URL проекта
      * @param budget бюджет
-     * @return возвращает сущность {@link org.seocrack.entities.Project}
+     * @return стандартный ответ {@link org.seocrack.dto.ResultOutput}
      */
-    Project addProject(String region, String url, int budget);
+    ResultOutput addProject(String region, String url, int budget);
 
     /**
      * Удаление проекта из системы
      * @param id уникальный идентификатор проекта
-     * @return возвращает состояние сущности {@link org.seocrack.entities.Project} до удаления
+     * @return стандартный ответ {@link org.seocrack.dto.ResultOutput}
      */
-    Project deleteProject(long id);
+    ResultOutput deleteProject(long id);
 
     /**
      * Получение проекта по идентификатору

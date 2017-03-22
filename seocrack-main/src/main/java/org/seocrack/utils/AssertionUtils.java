@@ -1,6 +1,6 @@
 package org.seocrack.utils;
 
-import org.seocrack.utils.exceptions.UntypedPlatformException;
+import org.seocrack.business.exceptions.UntypedPlatformException;
 
 /**
  * Created by meqqee on 30.01.2017.
