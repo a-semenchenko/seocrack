@@ -1,5 +1,7 @@
 package org.seocrack.servlets;
 
+import org.seocrack.business.faces.UserBusinessService;
+import org.seocrack.entities.User;
 import org.seocrack.services.UserSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
@@ -21,6 +23,9 @@ public class LoginServlet extends HttpServlet {
   @Autowired
   private UserSession userSession;
 
+  @Autowired
+  private UserBusinessService userBusinessService;
+
   @Override
   public void init(ServletConfig config) throws ServletException {
     super.init(config);
@@ -39,9 +44,12 @@ public class LoginServlet extends HttpServlet {
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    String login = request.getParameter("login");
+    String username = request.getParameter("username");
     String password = request.getParameter("password");
 
+    User user = userBusinessService.findByLogin(username);
 
+    if (user != null && user.getPassword().equals(password))
+      response.sendRedirect("index.jsp");
   }
 }
