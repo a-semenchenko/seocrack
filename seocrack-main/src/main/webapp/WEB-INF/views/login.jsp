@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
+    <spring:url value="/resources/css/styles.css" var="mainCss"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Авторизация</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="icon" href="http://vladmaxi.net/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="http://vladmaxi.net/favicon.ico" type="image/x-icon">
+    <link href="${mainCss}" rel="stylesheet" />
 </head>
 <body>
 <form id="login" action="" method="POST">
@@ -20,6 +20,7 @@
         <input type="submit" id="submit" value="ВОЙТИ">
         <a href="">Забыли пароль?</a><a href="">Регистрация</a>
     </fieldset>
+    <p>${error}</p>
 </form>
 </body>
 </html>

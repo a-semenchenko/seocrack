@@ -8,7 +8,7 @@ body
 {
     font: 12px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;
     margin: 0;
-    background: url(/images/bg.png) repeat;
+    background: url(/WEB-INF/views/images/bg.png) repeat;
 }
 
 /*--------------------*/

@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Авторизация</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="WEB-INF/views/css/styles.css">
     <link rel="icon" href="http://vladmaxi.net/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="http://vladmaxi.net/favicon.ico" type="image/x-icon">
 </head>
