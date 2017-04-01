@@ -1,5 +1,6 @@
 package org.seocrack.web;
 
+import org.seocrack.entities.User;
 import org.seocrack.services.UserSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class BaseController {
 
   @Autowired
-  private UserSession userSession;
+  protected UserSession<User> userSession;
 
   protected final String LOGIN_REDIRECT = "redirect:/auth/login";
 

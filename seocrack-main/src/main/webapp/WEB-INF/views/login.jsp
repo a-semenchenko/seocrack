@@ -18,7 +18,7 @@
     </fieldset>
     <fieldset id="actions">
         <input type="submit" id="submit" value="ВОЙТИ">
-        <a href="">Забыли пароль?</a><a href="">Регистрация</a>
+        <a href="">Забыли пароль?</a><a href="/auth/register">Регистрация</a>
     </fieldset>
     <p>${error}</p>
 </form>

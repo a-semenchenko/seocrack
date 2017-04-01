@@ -19,6 +19,6 @@ public class MainController extends BaseController {
     if (!checkAuthorisation())
       return LOGIN_REDIRECT;
 
-    return new ModelAndView("index");
+    return new ModelAndView("main");
   }
 }
