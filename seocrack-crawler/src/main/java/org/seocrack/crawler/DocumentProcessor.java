@@ -3,8 +3,8 @@ package org.seocrack.crawler;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.seocrack.crawler.entities.Page;
-import org.seocrack.crawler.entities.Link;
+import org.seocrack.crawler.entities.WebLink;
+import org.seocrack.crawler.entities.WebPage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,31 +23,31 @@ public class DocumentProcessor {
     /**
      * Обработчик документа
      * Собирает основные данные о документе
-     * @return {@link org.seocrack.crawler.entities.Page}
+     * @return {@link WebPage}
      */
-    public Page processPage() {
-        Page page = new Page();
+    public WebPage processPage() {
+        WebPage webPage = new WebPage();
 
-        page.setTitle(document.title());
+        webPage.setTitle(document.title());
 
-        return page;
+        return webPage;
     }
 
     /**
      * Обработчик ссылок
-     * @return коллекция объектов {@link Link}
+     * @return коллекция объектов {@link WebLink}
      */
-    public List<Link> processLinks() {
+    public List<WebLink> processLinks() {
         Elements elements = document.getElementsByTag("a");
-        List<Link> result = new ArrayList<Link>();
+        List<WebLink> result = new ArrayList<WebLink>();
 
         for (Element element : elements) {
-            Link link = new Link();
-            link.setAnchor(element.text());
-            link.setHref(element.attr("href"));
-            link.setDoFollow(isDoFollow(element));
+            WebLink webLink = new WebLink();
+            webLink.setAnchor(element.text());
+            webLink.setHref(element.attr("href"));
+            webLink.setDoFollow(isDoFollow(element));
 
-            result.add(link);
+            result.add(webLink);
         }
 
         return result;

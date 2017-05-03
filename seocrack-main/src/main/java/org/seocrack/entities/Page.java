@@ -25,5 +25,5 @@ public class Page {
     private Calendar yandexCache;
     private Calendar googleCache;
     //private List<Link> inLinks;
-    //private List<Link> outLinks;
+    //private List<Link> inLinks;
 }

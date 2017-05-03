@@ -2,8 +2,8 @@
 //
 //import org.jsoup.Jsoup;
 //import org.jsoup.nodes.Document;
-//import org.seocrack.crawler.entities.Page;
-//import org.seocrack.crawler.entities.Link;
+//import org.seocrack.crawler.entities.WebPage;
+//import org.seocrack.crawler.entities.WebLink;
 //import org.testng.annotations.BeforeClass;
 //import org.testng.annotations.Test;
 //
@@ -32,7 +32,7 @@
 //
 //    @Test(enabled = false)
 //    public void testProcessLinks() throws Exception {
-//        List<Link> links = documentProcessor.processLinks();
+//        List<WebLink> links = documentProcessor.processLinks();
 //
 //        assertNotNull(links);
 //        assertTrue(links.size() > 0);
@@ -40,7 +40,7 @@
 //
 //    @Test(enabled = false)
 //    public void testProcessPage() throws Exception {
-//        Page page = documentProcessor.processPage();
+//        WebPage page = documentProcessor.processPage();
 //
 //        assertNotNull(page);
 //        assertNotNull(page.getTitle());

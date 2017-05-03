@@ -54,6 +54,7 @@ public class AuthController extends BaseController {
     String username = webRequest.getParameter("username");
     String password = webRequest.getParameter("password");
     String firstName = webRequest.getParameter("firstName");
+    String lastName = webRequest.getParameter("lastName");
     String role = webRequest.getParameter("role");
 
     if (role.equals("seo"))
@@ -63,6 +64,8 @@ public class AuthController extends BaseController {
 
     user.setLogin(username);
     user.setPassword(password);
+    user.setFirstName(firstName);
+    user.setLastName(lastName);
 
     userBusinessService.createNewUser(user);
 

@@ -1,0 +1,2 @@
+ALTER TABLE
+	`User` ADD `eMail` VARCHAR(30)

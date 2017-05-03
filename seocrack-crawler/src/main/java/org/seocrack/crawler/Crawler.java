@@ -1,18 +1,23 @@
 package org.seocrack.crawler;
 
+import edu.uci.ics.crawler4j.crawler.Page;
+import edu.uci.ics.crawler4j.crawler.WebCrawler;
+import edu.uci.ics.crawler4j.parser.HtmlParseData;
+import edu.uci.ics.crawler4j.url.WebURL;
 import lombok.Getter;
-import org.jsoup.Connection;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
+import org.apache.http.Header;
 import org.seocrack.crawler.config.Configuration;
+import org.seocrack.crawler.entities.WebLink;
+import org.seocrack.crawler.entities.WebPage;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.IOException;
+import java.util.*;
+import java.util.regex.Pattern;
 
 /**
  * Created by meqqee on 12.02.2017.
  */
-public class Crawler implements Runnable {
+public class Crawler extends WebCrawler {
 
     @Autowired
     private Configuration configuration;
@@ -23,28 +28,84 @@ public class Crawler implements Runnable {
     @Autowired
     private DocumentProcessor documentProcessor;
 
+    private List<WebPage> pages = new ArrayList<>();
+
     /**
      * Идентификатор краулера для разделения потоков
      */
     @Getter
     private int id;
 
-    public void init(int id) {
-        this.id = id;
-    }
+    private static final Pattern IMAGE_EXTENSIONS = Pattern.compile(".*\\.(bmp|gif|jpg|png)$");
 
-    public Document connect(String url) {
-        Connection connection = Jsoup.connect(url);
-        try {
-            return connection.get();
-        } catch (IOException e) {
-            connectionsHolder.add(connection);
+    @Override
+    public boolean shouldVisit(Page referringPage, WebURL url) {
+        String href = url.getURL().toLowerCase();
+        // Ignore the url if it has an extension that matches our defined set of image extensions.
+        if (IMAGE_EXTENSIONS.matcher(href).matches()) {
+            return false;
         }
 
-        return null;
+        // Only accept the url if it is in the "www.ics.uci.edu" domain and protocol is "http".
+        return href.startsWith("http://oknapr.ru/");
     }
 
-    public void run() {
+    /**
+     * This function is called when a page is fetched and ready to be processed
+     * by your program.
+     */
+    @Override
+    public void visit(Page pageLib) {
+        int docid = pageLib.getWebURL().getDocid();
+        //String url = pageLib.getWebURL().getURL();
+        String domain = pageLib.getWebURL().getDomain();
+        String path = pageLib.getWebURL().getPath();
+        String subDomain = pageLib.getWebURL().getSubDomain();
+        String parentUrl = pageLib.getWebURL().getParentUrl();
+        String anchor = pageLib.getWebURL().getAnchor();
 
+        logger.debug("Docid: {}", docid);
+        //logger.info("URL: {}", url);
+        logger.debug("Domain: '{}'", domain);
+        logger.debug("Sub-domain: '{}'", subDomain);
+        logger.debug("Path: '{}'", path);
+        logger.debug("Parent page: {}", parentUrl);
+        logger.debug("Anchor text: {}", anchor);
+
+        if (pageLib.getParseData() instanceof HtmlParseData) {
+            WebPage webPage = new WebPage();
+
+            HtmlParseData htmlParseData = (HtmlParseData) pageLib.getParseData();
+            String text = htmlParseData.getText();
+            String html = htmlParseData.getHtml();
+            Set<WebURL> links = htmlParseData.getOutgoingUrls();
+
+            webPage.setTitle(htmlParseData.getTitle());
+
+            for (WebURL url : htmlParseData.getOutgoingUrls()) {
+                WebLink link = new WebLink();
+
+                link.setAnchor(url.getAnchor());
+                link.setHref(url.getURL());
+
+                webPage.addOutLink(link);
+            }
+
+            pages.add(webPage);
+
+            logger.debug("Text length: {}", text.length());
+            logger.debug("Html length: {}", html.length());
+            logger.debug("Number of outgoing links: {}", links.size());
+        }
+
+        Header[] responseHeaders = pageLib.getFetchResponseHeaders();
+        if (responseHeaders != null) {
+            logger.debug("Response headers:");
+            for (Header header : responseHeaders) {
+                logger.debug("\t{}: {}", header.getName(), header.getValue());
+            }
+        }
+
+        logger.debug("=============");
     }
 }

@@ -1,6 +1,9 @@
 package org.seocrack.crawler.entities;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 
@@ -8,8 +11,11 @@ import javax.persistence.Entity;
  * Created by meqqee on 30.01.2017.
  */
 @Entity
-@Data
-public class Link {
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class WebLink {
     private long id;
     private String href;
     private String anchor;
