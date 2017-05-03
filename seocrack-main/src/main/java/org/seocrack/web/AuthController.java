@@ -71,7 +71,7 @@ public class AuthController extends BaseController {
   }
 
   @RequestMapping(value = "/register", method = RequestMethod.GET)
-  public Object renderRegistation() {
+  public Object renderRegistration() {
     if (userSession.getLoggedUser() == null) {
       return new ModelAndView("registration");
     } else {
