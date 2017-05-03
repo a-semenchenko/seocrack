@@ -1,4 +1,4 @@
-<%@ webPage language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
@@ -7,12 +7,12 @@
     <spring:url value="/resources/css/styles.css" var="mainCss"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Авторизация</title>
-    <webLink href="${mainCss}" rel="stylesheet" />
+    <link href="${mainCss}" rel="stylesheet" />
 </head>
 <body>
 <form id="login" action="" method="POST">
-    <h1>Форма входа</h1>
     <fieldset id="inputs">
+        <h1>Форма входа</h1>
         <input id="username" name="username" type="text" placeholder="Логин" autofocus required>
         <input id="password" name="password" type="password" placeholder="Пароль" required>
     </fieldset>

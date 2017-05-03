@@ -1,11 +1,9 @@
 package org.seocrack.web;
 
 import org.seocrack.business.faces.UserBusinessService;
-import org.seocrack.entities.Customer;
-import org.seocrack.entities.ProjectManager;
+import org.seocrack.entities.Manager;
 import org.seocrack.entities.SeoSpecialist;
 import org.seocrack.entities.User;
-import org.seocrack.services.UserSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,7 +42,7 @@ public class AuthController extends BaseController {
 
     userSession.update(user);
 
-    return "redirect:/main";
+    return MAIN_REDIRECT;
   }
 
   @RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -60,7 +58,7 @@ public class AuthController extends BaseController {
     if (role.equals("seo"))
       user = new SeoSpecialist();
     else
-      user = new ProjectManager();
+      user = new Manager();
 
     user.setLogin(username);
     user.setPassword(password);
@@ -69,7 +67,7 @@ public class AuthController extends BaseController {
 
     userBusinessService.createNewUser(user);
 
-    return "redirect:/main";
+    return MAIN_REDIRECT;
   }
 
   @RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -77,7 +75,7 @@ public class AuthController extends BaseController {
     if (userSession.getLoggedUser() == null) {
       return new ModelAndView("registration");
     } else {
-      return "redirect:/main";
+      return MAIN_REDIRECT;
     }
   }
 }

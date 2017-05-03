@@ -1,19 +1,20 @@
 package org.seocrack.entities;
 
 import com.sun.org.apache.xpath.internal.compiler.Keywords;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
 /**
  * Created by meqqee on 30.01.2017.
  */
-@Data
 @Entity
+@Getter
+@Setter
 public class Project {
     @Id
     private long id;
@@ -33,7 +34,7 @@ public class Project {
       joinColumns = @JoinColumn(name = "projectId"),
       inverseJoinColumns = @JoinColumn(name = "manager")
     )
-    private Set<ProjectManager> projectManager;
+    private Set<Manager> manager;
     @ManyToOne
     private Customer customer;
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

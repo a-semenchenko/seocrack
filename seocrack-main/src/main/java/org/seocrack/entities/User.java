@@ -1,6 +1,7 @@
 package org.seocrack.entities;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.seocrack.entities.enums.Role;
 
 import javax.persistence.*;
@@ -8,8 +9,9 @@ import javax.persistence.*;
 /**
  * Created by meqqee on 30.01.2017.
  */
-@Data
 @Entity
+@Getter
+@Setter
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "UTYPE")
 public abstract class User {

@@ -1,7 +1,7 @@
 package org.seocrack.entities;
 
-import lombok.Data;
-import org.seocrack.entities.enums.Role;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -10,9 +10,10 @@ import java.util.List;
 /**
  * Created by meqqee on 30.01.2017.
  */
-@Data
 @Entity
-public class ProjectManager extends User {
-    @ManyToMany(mappedBy = "projectManager")
+@Getter
+@Setter
+public class Manager extends User {
+    @ManyToMany(mappedBy = "manager")
     private List<Project> projects;
 }

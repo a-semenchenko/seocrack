@@ -1,9 +1,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ webPage contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include webPage="static/header.jsp"/>
-<jsp:include webPage="static/sidebar.jsp"/>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:include page="static/header.jsp"/>
+<jsp:include page="static/sidebar.jsp"/>
 <section id="content">
-<jsp:include webPage="static/top-menu.jsp"/>
+<jsp:include page="static/top-menu.jsp"/>
     <div class="content">
         <div class="content-header">
             <h1>Dashboard</h1>
