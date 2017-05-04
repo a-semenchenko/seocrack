@@ -26,7 +26,7 @@ public class CrawlerController {
      * crawlStorageFolder is a folder where intermediate crawl data is
      * stored.
      */
-    String crawlStorageFolder = "D:\\crawl";
+    String crawlStorageFolder = "C:\\Projects\\crawl";
 
     /*
      * numberOfCrawlers shows the number of concurrent threads that should
@@ -93,7 +93,7 @@ public class CrawlerController {
      * URLs that are fetched and then the crawler starts following links
      * which are found in these pages
      */
-    controller.addSeed("http://oknapr.ru");
+    //controller.addSeed("http://oknapr.ru");
     controller.addSeed("http://st-lt.ru/");
 
     /*

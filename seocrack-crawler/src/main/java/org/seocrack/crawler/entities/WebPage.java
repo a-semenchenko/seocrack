@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -23,7 +24,7 @@ public class WebPage {
     private String description;
     private String keywords;
     private String url;
-    private Set<WebLink> outLinks;
+    private Set<WebLink> outLinks = new HashSet<>();
     private Set<WebLink> inLinks;
 
     public void addOutLink(WebLink webLink) {
