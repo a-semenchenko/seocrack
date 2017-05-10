@@ -5,6 +5,9 @@
 <section id="content">
 <jsp:include page="static/top-menu.jsp"/>
     <div class="content">
+        <form method="POST", action="crawl">
+            <input type="submit" value="go"/>
+        </form>
         <div class="content-header">
             <h1>Dashboard</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>

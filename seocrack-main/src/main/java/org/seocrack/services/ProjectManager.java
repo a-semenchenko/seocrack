@@ -16,35 +16,35 @@ public interface ProjectManager {
      * @param region регион продвижения
      * @param url URL проекта
      * @param budget бюджет
-     * @return стандартный ответ {@link org.seocrack.dto.ResultOutput}
+     * @return стандартный ответ {@link ResultOutput}
      */
     ResultOutput addProject(String region, String url, int budget);
 
     /**
      * Удаление проекта из системы
      * @param id уникальный идентификатор проекта
-     * @return стандартный ответ {@link org.seocrack.dto.ResultOutput}
+     * @return стандартный ответ {@link ResultOutput}
      */
     ResultOutput deleteProject(long id);
 
     /**
      * Получение проекта по идентификатору
      * @param id уникальный идентификатор проекта
-     * @return стандартный ответ {@link org.seocrack.entities.Project}
+     * @return стандартный ответ {@link Project}
      */
     Project getProject(long id);
 
     /**
      * Получение списка ключевых слов по идентификатору проекта
      * @param id уникальный индентификатор проекта
-     * @return стандартный ответ {@link org.seocrack.entities.Project}
+     * @return стандартный ответ {@link Project}
      */
     List<Keyword> getProjectKeywords(long id);
 
     /**
      * Добавление ключевых слов к проекту по индентификатору
      * @param id уникальный идентификатор проекта
-     * @param keywords список ключевых слов для добавления, содержит {@link org.seocrack.entities.Keyword}
+     * @param keywords список ключевых слов для добавления, содержит {@link Keyword}
      */
     void setProjectKeywords(long id, List<Keyword> keywords);
 

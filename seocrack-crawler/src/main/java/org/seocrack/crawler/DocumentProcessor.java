@@ -3,8 +3,10 @@ package org.seocrack.crawler;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.seocrack.crawler.business.api.WebPageBusinessService;
 import org.seocrack.crawler.entities.WebLink;
 import org.seocrack.crawler.entities.WebPage;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,8 @@ import java.util.List;
  * Created by meqqee on 16.02.2017.
  */
 public class DocumentProcessor {
+    @Autowired
+    private WebPageBusinessService webPageService;
     private Document document = null;
 
     public DocumentProcessor(Document document) {

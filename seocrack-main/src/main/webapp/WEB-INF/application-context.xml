@@ -17,9 +17,6 @@
   <jee:jndi-lookup id="dataSource" jndi-name="jdbc/seocrack"/>
   <!--<jee:jndi-lookup id="connectionFactory" jndi-name="connectionFactory"/>-->
 
-  <!-- imports -->
-  <import resource="classpath*:module-context.xml"/>
-
   <context:annotation-config/>
   <context:component-scan base-package="org.seocrack"/>
 
@@ -29,6 +26,7 @@
     <property name="packagesToScan">
       <list>
         <value>org.seocrack.entities</value>
+        <value>org.seocrack.*.entities</value>
       </list>
     </property>
     <property name="jpaVendorAdapter">
@@ -60,7 +58,6 @@
     <property name="outOfOrder" value="true"/>
     <property name="sqlMigrationPrefix" value="v"/>
     <property name="sqlMigrationSeparator" value="__"/>
-
     <property name="placeholderPrefix" value="@{"/>
     <property name="placeholderSuffix" value="}"/>
   </bean>
@@ -71,5 +68,8 @@
   <tx:annotation-driven/>
 
   <bean class="org.seocrack.services.DBProjectManager"/>
+
+  <!-- imports -->
+  <import resource="classpath*:module-context.xml"/>
 
 </beans>

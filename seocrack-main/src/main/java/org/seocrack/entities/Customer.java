@@ -1,9 +1,7 @@
 package org.seocrack.entities;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.seocrack.entities.enums.Role;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;

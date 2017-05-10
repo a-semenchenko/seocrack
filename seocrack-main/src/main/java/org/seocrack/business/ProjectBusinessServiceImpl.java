@@ -1,6 +1,6 @@
 package org.seocrack.business;
 
-import org.seocrack.business.faces.ProjectBusinessService;
+import org.seocrack.business.api.ProjectBusinessService;
 import org.seocrack.entities.Keyword;
 import org.seocrack.entities.Project;
 import org.seocrack.repository.ProjectsRepository;

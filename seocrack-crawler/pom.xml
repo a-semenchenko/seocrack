@@ -29,21 +29,38 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.1.0.Final</version>
         </dependency>
-        <dependency>
-            <groupId>org.seocrack</groupId>
-            <artifactId>seocrack-main</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <type>war</type>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.seocrack</groupId>-->
+            <!--<artifactId>seocrack-main</artifactId>-->
+            <!--<version>1.0-SNAPSHOT</version>-->
+            <!--<type>war</type>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>RELEASE</version>
         </dependency>
+        <!-- crawler4j dependencies -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.3</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sleepycat</groupId>
+            <artifactId>je</artifactId>
+            <version>5.0.73</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-parsers</artifactId>
+            <version>1.14</version>
+        </dependency>
         <dependency>
             <groupId>edu.uci.ics</groupId>
             <artifactId>crawler4j</artifactId>
-            <version>4.3</version>
+            <version>4.4</version>
         </dependency>
     </dependencies>
 

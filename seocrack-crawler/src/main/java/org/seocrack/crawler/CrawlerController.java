@@ -14,13 +14,7 @@ import org.slf4j.LoggerFactory;
 public class CrawlerController {
   private static final Logger logger = LoggerFactory.getLogger(CrawlerController.class);
 
-  public static void main(String[] args) throws Exception {
-//    if (args.length != 2) {
-//      logger.info("Needed parameters: ");
-//      logger.info("\t rootFolder (it will contain intermediate crawl data)");
-//      logger.info("\t numberOfCralwers (number of concurrent threads)");
-//      return;
-//    }
+  public void start() throws Exception {
 
     /*
      * crawlStorageFolder is a folder where intermediate crawl data is

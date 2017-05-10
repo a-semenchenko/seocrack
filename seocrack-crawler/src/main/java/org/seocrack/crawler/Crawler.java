@@ -6,6 +6,7 @@ import edu.uci.ics.crawler4j.parser.HtmlParseData;
 import edu.uci.ics.crawler4j.url.WebURL;
 import lombok.Getter;
 import org.apache.http.Header;
+import org.seocrack.crawler.business.api.WebPageBusinessService;
 import org.seocrack.crawler.config.Configuration;
 import org.seocrack.crawler.entities.WebLink;
 import org.seocrack.crawler.entities.WebPage;
@@ -20,13 +21,10 @@ import java.util.regex.Pattern;
 public class Crawler extends WebCrawler {
 
     @Autowired
+    private WebPageBusinessService webPageService;
+
+    @Autowired
     private Configuration configuration;
-
-    @Autowired
-    private ConnectionsHolder connectionsHolder;
-
-    @Autowired
-    private DocumentProcessor documentProcessor;
 
     private List<WebPage> pages = new ArrayList<>();
 
@@ -79,19 +77,23 @@ public class Crawler extends WebCrawler {
             String text = htmlParseData.getText();
             String html = htmlParseData.getHtml();
             Set<WebURL> links = htmlParseData.getOutgoingUrls();
-
             webPage.setTitle(htmlParseData.getTitle());
-
+            webPage.setDescription(htmlParseData.getMetaTagValue("description"));
+            webPage.setKeywords(htmlParseData.getMetaTagValue("keywords"));
+            webPage.setUrl(pageLib.getWebURL().getURL());
             for (WebURL url : htmlParseData.getOutgoingUrls()) {
                 WebLink link = new WebLink();
-
                 link.setAnchor(url.getAnchor());
                 link.setHref(url.getURL());
-
+                if (url.getAttribute("rel").equals("nofollow"))
+                    link.setDoFollow(false);
+                else
+                    link.setDoFollow(true);
                 webPage.addOutLink(link);
             }
-
             pages.add(webPage);
+            configuration.getCrawlDelay();
+            webPageService.addPage(webPage);
 
             logger.debug("Text length: {}", text.length());
             logger.debug("Html length: {}", html.length());

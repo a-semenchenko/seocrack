@@ -1,4 +1,4 @@
-package org.seocrack.business.faces;
+package org.seocrack.business.api;
 
 import org.seocrack.entities.User;
 import org.springframework.stereotype.Service;

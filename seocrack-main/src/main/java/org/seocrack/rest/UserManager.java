@@ -1,8 +1,8 @@
 //package org.seocrack.rest;
 //
-//import org.seocrack.business.faces.UserBusinessService;
-//import org.seocrack.entities.User;
-//import org.seocrack.services.UserSession;
+//import UserBusinessService;
+//import User;
+//import UserSession;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Component;
 //

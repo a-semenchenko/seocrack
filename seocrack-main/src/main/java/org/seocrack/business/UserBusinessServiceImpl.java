@@ -1,6 +1,6 @@
 package org.seocrack.business;
 
-import org.seocrack.business.faces.UserBusinessService;
+import org.seocrack.business.api.UserBusinessService;
 import org.seocrack.entities.User;
 import org.seocrack.repository.UserRepository;
 import org.seocrack.services.UserSession;

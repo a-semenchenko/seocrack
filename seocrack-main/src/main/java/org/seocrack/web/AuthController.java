@@ -1,8 +1,8 @@
 package org.seocrack.web;
 
-import org.seocrack.business.faces.UserBusinessService;
-import org.seocrack.entities.Manager;
 import org.seocrack.entities.SeoSpecialist;
+import org.seocrack.business.api.UserBusinessService;
+import org.seocrack.entities.Manager;
 import org.seocrack.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

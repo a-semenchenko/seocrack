@@ -2,8 +2,8 @@
 //
 //import org.jsoup.Jsoup;
 //import org.jsoup.nodes.Document;
-//import org.seocrack.crawler.entities.WebPage;
-//import org.seocrack.crawler.entities.WebLink;
+//import WebPage;
+//import WebLink;
 //import org.testng.annotations.BeforeClass;
 //import org.testng.annotations.Test;
 //
