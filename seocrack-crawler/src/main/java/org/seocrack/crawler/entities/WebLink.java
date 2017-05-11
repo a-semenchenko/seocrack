@@ -5,9 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 /**
  * Created by meqqee on 30.01.2017.
@@ -19,6 +17,7 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 public class WebLink {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
     private String href;
     private String anchor;

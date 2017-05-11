@@ -3,9 +3,7 @@ package org.seocrack.entities;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Calendar;
 
 /**
@@ -17,6 +15,7 @@ import java.util.Calendar;
 @Setter
 public class Keyword {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
     private int position;
     private Calendar checkDate;

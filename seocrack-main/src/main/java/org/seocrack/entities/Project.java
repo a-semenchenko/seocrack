@@ -17,6 +17,7 @@ import java.util.Set;
 @Setter
 public class Project {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
     private String region;
     private String url;

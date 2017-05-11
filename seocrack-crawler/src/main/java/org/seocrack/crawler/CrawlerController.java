@@ -7,11 +7,16 @@ import edu.uci.ics.crawler4j.robotstxt.RobotstxtConfig;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by meqqee on 04.04.2017.
  */
 public class CrawlerController {
+
+  @Autowired
+  private CrawlerFactory crawlerFactory;
+
   private static final Logger logger = LoggerFactory.getLogger(CrawlerController.class);
 
   public void start() throws Exception {
@@ -94,6 +99,6 @@ public class CrawlerController {
      * Start the crawl. This is a blocking operation, meaning that your code
      * will reach the line after this only when crawling is finished.
      */
-    controller.start(Crawler.class, numberOfCrawlers);
+    controller.start(crawlerFactory, numberOfCrawlers);
   }
 }

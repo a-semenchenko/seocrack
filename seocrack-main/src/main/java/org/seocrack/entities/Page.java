@@ -3,6 +3,8 @@ package org.seocrack.entities;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Calendar;
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.List;
 @Setter
 public class Page {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
     private List<Keyword> relevantKeywords;
     private String url;

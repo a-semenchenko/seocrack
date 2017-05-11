@@ -6,8 +6,8 @@ import edu.uci.ics.crawler4j.parser.HtmlParseData;
 import edu.uci.ics.crawler4j.url.WebURL;
 import lombok.Getter;
 import org.apache.http.Header;
+import org.seocrack.crawler.business.api.WebLinkBusinessService;
 import org.seocrack.crawler.business.api.WebPageBusinessService;
-import org.seocrack.crawler.config.Configuration;
 import org.seocrack.crawler.entities.WebLink;
 import org.seocrack.crawler.entities.WebPage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +21,10 @@ import java.util.regex.Pattern;
 public class Crawler extends WebCrawler {
 
     @Autowired
-    private WebPageBusinessService webPageService;
+    private WebPageBusinessService webPageBusinessService;
 
     @Autowired
-    private Configuration configuration;
+    private WebLinkBusinessService webLinkBusinessService;
 
     private List<WebPage> pages = new ArrayList<>();
 
@@ -69,7 +69,6 @@ public class Crawler extends WebCrawler {
         logger.debug("Path: '{}'", path);
         logger.debug("Parent page: {}", parentUrl);
         logger.debug("Anchor text: {}", anchor);
-        logger.debug("webPageService : {}", webPageService);
 
         if (pageLib.getParseData() instanceof HtmlParseData) {
             WebPage webPage = new WebPage();
@@ -91,10 +90,10 @@ public class Crawler extends WebCrawler {
                 else
                     link.setDoFollow(true);
                 webPage.addOutLink(link);
+                link.setWebPage(webPage);
             }
             pages.add(webPage);
-            configuration.getCrawlDelay();
-            webPageService.addPage(webPage);
+            webPageBusinessService.addPage(webPage);
 
             logger.debug("Text length: {}", text.length());
             logger.debug("Html length: {}", html.length());

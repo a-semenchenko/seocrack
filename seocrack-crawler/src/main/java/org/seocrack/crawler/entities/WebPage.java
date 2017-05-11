@@ -7,9 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by meqqee on 16.02.2017.
@@ -21,6 +19,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class WebPage {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
     //private WebPage parent;
     private String title;
