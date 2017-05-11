@@ -69,6 +69,7 @@ public class Crawler extends WebCrawler {
         logger.debug("Path: '{}'", path);
         logger.debug("Parent page: {}", parentUrl);
         logger.debug("Anchor text: {}", anchor);
+        logger.debug("webPageService : {}", webPageService);
 
         if (pageLib.getParseData() instanceof HtmlParseData) {
             WebPage webPage = new WebPage();

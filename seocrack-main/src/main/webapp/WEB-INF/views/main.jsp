@@ -5,7 +5,7 @@
 <section id="content">
 <jsp:include page="static/top-menu.jsp"/>
     <div class="content">
-        <form method="POST", action="crawl">
+        <form method="POST", action="/main/crawl">
             <input type="submit" value="go"/>
         </form>
         <div class="content-header">
