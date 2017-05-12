@@ -5,6 +5,7 @@ import edu.uci.ics.crawler4j.crawler.WebCrawler;
 import edu.uci.ics.crawler4j.parser.HtmlParseData;
 import edu.uci.ics.crawler4j.url.WebURL;
 import lombok.Getter;
+import lombok.Setter;
 import org.apache.http.Header;
 import org.seocrack.crawler.business.api.WebLinkBusinessService;
 import org.seocrack.crawler.business.api.WebPageBusinessService;
@@ -26,6 +27,8 @@ public class Crawler extends WebCrawler {
     @Autowired
     private WebLinkBusinessService webLinkBusinessService;
 
+    @Setter
+    private String host;
     private List<WebPage> pages = new ArrayList<>();
 
     /**
@@ -45,7 +48,7 @@ public class Crawler extends WebCrawler {
         }
 
         // Only accept the url if it is in the "www.ics.uci.edu" domain and protocol is "http".
-        return href.startsWith("http://st-lt.ru/");
+        return href.startsWith(host);
     }
 
     /**

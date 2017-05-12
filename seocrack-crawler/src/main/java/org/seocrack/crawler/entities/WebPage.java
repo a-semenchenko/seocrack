@@ -19,13 +19,16 @@ import java.util.List;
 @AllArgsConstructor
 public class WebPage {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_cust")
+    @SequenceGenerator(name = "seq_cust", sequenceName = "webPage_seq", allocationSize = 1)
     private long id;
     //private WebPage parent;
     private String title;
     private String description;
     private String keywords;
     private String url;
+    @ManyToOne
+    private WebProject webProject;
     @OneToMany(mappedBy = "webPage", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<WebLink> outLinks = new ArrayList<>();
 //    @OneToMany(mappedBy = "webPage", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

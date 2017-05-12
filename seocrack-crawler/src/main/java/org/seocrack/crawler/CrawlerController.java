@@ -5,6 +5,7 @@ import edu.uci.ics.crawler4j.crawler.CrawlController;
 import edu.uci.ics.crawler4j.fetcher.PageFetcher;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtConfig;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
+import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,12 @@ public class CrawlerController {
   @Autowired
   private CrawlerFactory crawlerFactory;
 
+  @Setter
+  private int crawlers = 1;
+
   private static final Logger logger = LoggerFactory.getLogger(CrawlerController.class);
 
-  public void start() throws Exception {
+  public void start(String seed) throws Exception {
 
     /*
      * crawlStorageFolder is a folder where intermediate crawl data is
@@ -31,7 +35,7 @@ public class CrawlerController {
      * numberOfCrawlers shows the number of concurrent threads that should
      * be initiated for crawling.
      */
-    int numberOfCrawlers = Integer.parseInt("1");
+    int numberOfCrawlers = crawlers;
 
     CrawlConfig config = new CrawlConfig();
 
@@ -55,7 +59,7 @@ public class CrawlerController {
      */
     config.setMaxPagesToFetch(1000);
 
-    /**
+    /*
      * Do you want crawler4j to crawl also binary data ?
      * example: the contents of pdf, or the metadata of images etc
      */
@@ -93,7 +97,9 @@ public class CrawlerController {
      * which are found in these pages
      */
     //controller.addSeed("http://oknapr.ru");
-    controller.addSeed("http://st-lt.ru/");
+    controller.addSeed(seed);
+
+    crawlerFactory.setHost(seed);
 
     /*
      * Start the crawl. This is a blocking operation, meaning that your code

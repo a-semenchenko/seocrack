@@ -1,6 +1,5 @@
 package org.seocrack.web;
 
-import org.seocrack.crawler.CrawlerController;
 import org.seocrack.entities.User;
 import org.seocrack.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,35 +10,29 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.ws.rs.GET;
-
 /**
- * Created by a.semenchenko on 23.03.2017.
+ * Created by a.semenchenko on 12.05.2017.
  */
 @Controller
-@RequestMapping("/main")
-public class MainController extends BaseController {
+@RequestMapping("/crawler")
+public class CrawlerController extends BaseController {
+
+  @Autowired
+  private org.seocrack.crawler.CrawlerController crawler;
 
   @RequestMapping
-  public Object index(Model model) {
+  public Object render(Model model) {
     if (!checkAuthorisation())
       return LOGIN_REDIRECT;
     User user = userSession.getLoggedUser();
     model.addAttribute("login", user.getFirstName() + " " + user.getLastName());
-    return new ModelAndView("main");
+    return new ModelAndView("crawler");
   }
 
-  public void addProject(WebRequest request) {
-    int budget;
-    try {
-      budget = Integer.parseInt(request.getParameter("budget"));
-    } catch (NumberFormatException e) {
-      budget = 0;
-    }
-    projectManager.addProject(request.getParameter("region"), request.getParameter("url"), budget);
-  }
-
-  private void renderPage(ModelAndView mav) {
-
+  @RequestMapping(value="crawl", method = RequestMethod.POST)
+  public void crawl(WebRequest request) throws Exception {
+    String url = request.getParameter("url");
+    if (!StringUtils.isNullOrEmpty(url))
+      crawler.start(url);
   }
 }

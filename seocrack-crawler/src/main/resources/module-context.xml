@@ -10,4 +10,6 @@
 
     <bean class="org.seocrack.crawler.Crawler" scope="prototype"/>
 
+    <bean class="org.seocrack.crawler.business.WebProjectManagerImpl"/>
+
 </beans>

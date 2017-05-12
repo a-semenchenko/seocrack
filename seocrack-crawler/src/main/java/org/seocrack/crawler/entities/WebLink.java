@@ -17,7 +17,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class WebLink {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_gen")
+    @SequenceGenerator(name = "seq_gen", sequenceName = "webLink_seq", allocationSize = 1)
     private long id;
     private String href;
     private String anchor;

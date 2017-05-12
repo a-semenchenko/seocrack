@@ -1,11 +1,22 @@
 CREATE TABLE
+	`WebProject` (
+		`id` BIGINT,
+		`name` VARCHAR(50),
+		`created` TIMESTAMP(14),
+		`lastUpdate` TIMESTAMP(14),
+		PRIMARY KEY(`id`)
+	);
+
+CREATE TABLE
 	`WebPage` (
 		`id` BIGINT,
 		`title` VARCHAR(150),
 		`description` VARCHAR(250),
 		`keywords` VARCHAR(250),
 		`url` VARCHAR(50),
-		PRIMARY KEY(`id`)
+		`webProject` BIGINT,
+		PRIMARY KEY(`id`),
+		FOREIGN KEY(`webProject`) REFERENCES `WebProject`(`id`)
 	);
 
 CREATE TABLE
