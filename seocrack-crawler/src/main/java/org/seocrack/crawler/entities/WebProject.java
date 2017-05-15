@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -24,9 +25,13 @@ public class WebProject {
   private Long id;
   private String name;
   @OneToMany(mappedBy = "webProject", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-  private List<WebPage> pages;
+  private List<WebPage> pages = new ArrayList<>();
   @Temporal(TemporalType.TIMESTAMP)
   private Calendar created;
   @Temporal(TemporalType.TIMESTAMP)
   private Calendar lastUpdate;
+
+  public void addPage(WebPage page) {
+    pages.add(page);
+  }
 }

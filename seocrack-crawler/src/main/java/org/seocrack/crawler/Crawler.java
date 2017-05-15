@@ -11,6 +11,7 @@ import org.seocrack.crawler.business.api.WebLinkBusinessService;
 import org.seocrack.crawler.business.api.WebPageBusinessService;
 import org.seocrack.crawler.entities.WebLink;
 import org.seocrack.crawler.entities.WebPage;
+import org.seocrack.crawler.entities.WebProject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.*;
@@ -28,7 +29,7 @@ public class Crawler extends WebCrawler {
     private WebLinkBusinessService webLinkBusinessService;
 
     @Setter
-    private String host;
+    private WebProject project;
     private List<WebPage> pages = new ArrayList<>();
 
     /**
@@ -48,7 +49,7 @@ public class Crawler extends WebCrawler {
         }
 
         // Only accept the url if it is in the "www.ics.uci.edu" domain and protocol is "http".
-        return href.startsWith(host);
+        return href.startsWith(project.getName());
     }
 
     /**
@@ -93,10 +94,10 @@ public class Crawler extends WebCrawler {
                 else
                     link.setDoFollow(true);
                 webPage.addOutLink(link);
+                webPage.setWebProject(project);
                 link.setWebPage(webPage);
             }
-            pages.add(webPage);
-            webPageBusinessService.addPage(webPage);
+            project.addPage(webPage);
 
             logger.debug("Text length: {}", text.length());
             logger.debug("Html length: {}", html.length());

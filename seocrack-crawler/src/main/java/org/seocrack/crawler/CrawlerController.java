@@ -6,6 +6,8 @@ import edu.uci.ics.crawler4j.fetcher.PageFetcher;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtConfig;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
 import lombok.Setter;
+import org.seocrack.crawler.business.api.WebProjectManager;
+import org.seocrack.crawler.entities.WebProject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +20,15 @@ public class CrawlerController {
   @Autowired
   private CrawlerFactory crawlerFactory;
 
+  @Autowired
+  private WebProjectManager webProjectManager;
+
   @Setter
   private int crawlers = 1;
 
   private static final Logger logger = LoggerFactory.getLogger(CrawlerController.class);
 
-  public void start(String seed) throws Exception {
+  public void start(WebProject project) throws Exception {
 
     /*
      * crawlStorageFolder is a folder where intermediate crawl data is
@@ -97,14 +102,16 @@ public class CrawlerController {
      * which are found in these pages
      */
     //controller.addSeed("http://oknapr.ru");
-    controller.addSeed(seed);
+    controller.addSeed(project.getName());
 
-    crawlerFactory.setHost(seed);
+    crawlerFactory.setProject(project);
 
     /*
      * Start the crawl. This is a blocking operation, meaning that your code
      * will reach the line after this only when crawling is finished.
      */
     controller.start(crawlerFactory, numberOfCrawlers);
+
+    webProjectManager.updateProject(project);
   }
 }

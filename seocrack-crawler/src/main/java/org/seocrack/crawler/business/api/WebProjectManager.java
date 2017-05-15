@@ -8,7 +8,7 @@ import java.util.List;
  * Created by a.semenchenko on 12.05.2017.
  */
 public interface WebProjectManager {
-  void addProject(String name, String commentary);
+  WebProject addProject(String name, String commentary);
   void deleteProject(String name);
   void updateProject(WebProject webProject);
   WebProject getProjectByName(String name);

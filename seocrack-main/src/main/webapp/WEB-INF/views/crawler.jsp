@@ -11,7 +11,7 @@
         </div>
         <form method="POST", action="/crawler/crawl">
             <input type="text" name="url" placeholder="URL"/>
-            <input type="submit" value="go"/>
+            <input type="submit" value="add"/>
         </form>
     </div>
 </section>

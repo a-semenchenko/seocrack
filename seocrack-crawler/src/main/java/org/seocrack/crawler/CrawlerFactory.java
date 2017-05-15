@@ -2,6 +2,7 @@ package org.seocrack.crawler;
 
 import edu.uci.ics.crawler4j.crawler.CrawlController;
 import lombok.Setter;
+import org.seocrack.crawler.entities.WebProject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -13,11 +14,11 @@ public class CrawlerFactory implements CrawlController.WebCrawlerFactory<Crawler
   private Crawler crawler;
 
   @Setter
-  private String host;
+  private WebProject project;
 
   @Override
   public Crawler newInstance() throws Exception {
-    crawler.setHost(this.host);
+    crawler.setProject(this.project);
     return crawler;
   }
 }

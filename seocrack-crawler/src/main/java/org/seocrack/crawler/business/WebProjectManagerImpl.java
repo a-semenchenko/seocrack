@@ -6,6 +6,8 @@ import org.seocrack.crawler.repository.WebProjectRepository;
 import org.seocrack.crawler.utils.AssertionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -17,27 +19,33 @@ public class WebProjectManagerImpl implements WebProjectManager {
   private WebProjectRepository repository;
 
   @Override
-  public void addProject(String name, String commentary) {
+  public WebProject addProject(String name, String commentary) {
     AssertionUtils.assertEmpty(name, "Не указано название проекта");
+    WebProject project = new WebProject(null, name, new ArrayList<>(), Calendar.getInstance(), null);
+    repository.save(project);
+    return project;
   }
 
   @Override
   public void deleteProject(String name) {
-
+    WebProject project = repository.findByName(name);
+    if (project != null)
+      repository.delete(project);
   }
 
   @Override
   public void updateProject(WebProject webProject) {
-
+    if (webProject != null)
+      repository.save(webProject);
   }
 
   @Override
   public WebProject getProjectByName(String name) {
-    return null;
+    return repository.findByName(name);
   }
 
   @Override
   public List<WebProject> getAllProjects() {
-    return null;
+    return (List<WebProject>) repository.findAll();
   }
 }

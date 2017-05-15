@@ -14,9 +14,9 @@ CREATE TABLE
 		`description` VARCHAR(250),
 		`keywords` VARCHAR(250),
 		`url` VARCHAR(50),
-		`webProject` BIGINT,
+		`webProject_id` BIGINT,
 		PRIMARY KEY(`id`),
-		FOREIGN KEY(`webProject`) REFERENCES `WebProject`(`id`)
+		FOREIGN KEY(`webProject_id`) REFERENCES `WebProject`(`id`)
 	);
 
 CREATE TABLE

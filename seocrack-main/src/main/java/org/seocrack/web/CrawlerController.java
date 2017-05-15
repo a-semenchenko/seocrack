@@ -1,5 +1,7 @@
 package org.seocrack.web;
 
+import org.seocrack.crawler.business.api.WebProjectManager;
+import org.seocrack.crawler.entities.WebProject;
 import org.seocrack.entities.User;
 import org.seocrack.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class CrawlerController extends BaseController {
   @Autowired
   private org.seocrack.crawler.CrawlerController crawler;
 
+  @Autowired
+  private WebProjectManager webProjectManager;
+
   @RequestMapping
   public Object render(Model model) {
     if (!checkAuthorisation())
@@ -32,7 +37,9 @@ public class CrawlerController extends BaseController {
   @RequestMapping(value="crawl", method = RequestMethod.POST)
   public void crawl(WebRequest request) throws Exception {
     String url = request.getParameter("url");
-    if (!StringUtils.isNullOrEmpty(url))
-      crawler.start(url);
+    if (!StringUtils.isNullOrEmpty(url)) {
+      WebProject project = webProjectManager.addProject(url, null);
+      crawler.start(project);
+    }
   }
 }
