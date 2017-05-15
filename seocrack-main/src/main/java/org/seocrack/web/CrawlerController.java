@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 /**
  * Created by a.semenchenko on 12.05.2017.
  */
@@ -31,6 +33,8 @@ public class CrawlerController extends BaseController {
       return LOGIN_REDIRECT;
     User user = userSession.getLoggedUser();
     model.addAttribute("login", user.getFirstName() + " " + user.getLastName());
+    List<WebProject> projects = webProjectManager.getAllProjects();
+    model.addAttribute("projects", projects);
     return new ModelAndView("crawler");
   }
 

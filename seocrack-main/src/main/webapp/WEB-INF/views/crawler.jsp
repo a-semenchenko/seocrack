@@ -1,4 +1,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="static/header.jsp"/>
 <jsp:include page="static/sidebar.jsp"/>
@@ -13,6 +14,15 @@
             <input type="text" name="url" placeholder="URL"/>
             <input type="submit" value="add"/>
         </form>
+        <table>
+            <th>WebProjects</th>
+            <c:forEach items="${projects}" var="iterator" varStatus="rowStatus">
+            <tr>
+                <td><a href="/project/${iterator.id}">${iterator.name}</a></td>
+                <td>${iterator.created}</td>
+            </tr>
+            </c:forEach>
+        </table>
     </div>
 </section>
 </body>
