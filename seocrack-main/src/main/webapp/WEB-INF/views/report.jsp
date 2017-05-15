@@ -15,12 +15,15 @@
             <input type="submit" value="add"/>
         </form>
         <table>
-            <th>WebProjects</th>
-            <c:forEach items="${projects}" var="iterator" varStatus="rowStatus">
-            <tr>
-                <td><a href="/crawler/project/${iterator.id}">${iterator.name}</a></td>
-                <td>${iterator.created}</td>
-            </tr>
+            <th>WebProject</th>
+            <c:forEach items="${project.pages}" var="iterator" varStatus="rowStatus">
+                <tr>
+                    <td><a href="/project/${iterator.url}">${iterator.url}</a></td>
+                    <td>${iterator.title}</td>
+                    <td>${iterator.description}</td>
+                    <td>${iterator.keywords}</td>
+                    <%--<td>${iterator.webLink.size}</td>--%>
+                </tr>
             </c:forEach>
         </table>
     </div>

@@ -8,4 +8,5 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface WebProjectRepository extends CrudRepository<WebProject, String> {
   WebProject findByName(String name);
+  WebProject findById(long id);
 }

@@ -7,6 +7,7 @@ import org.seocrack.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.WebRequest;
@@ -19,7 +20,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/crawler")
-public class CrawlerController extends BaseController {
+public class ProjectController extends BaseController {
 
   @Autowired
   private org.seocrack.crawler.CrawlerController crawler;
@@ -45,5 +46,12 @@ public class CrawlerController extends BaseController {
       WebProject project = webProjectManager.addProject(url, null);
       crawler.start(project);
     }
+  }
+
+  @RequestMapping(value="project/{id}", method = RequestMethod.GET)
+  public ModelAndView getSingleProjectPage(@PathVariable("id") long id, Model model) {
+    WebProject project = webProjectManager.getProjectById(id);
+    model.addAttribute("project", project);
+    return new ModelAndView("report");
   }
 }

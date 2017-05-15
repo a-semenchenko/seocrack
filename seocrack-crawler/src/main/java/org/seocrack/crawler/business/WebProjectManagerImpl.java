@@ -48,4 +48,9 @@ public class WebProjectManagerImpl implements WebProjectManager {
   public List<WebProject> getAllProjects() {
     return (List<WebProject>) repository.findAll();
   }
+
+  @Override
+  public WebProject getProjectById(long id) {
+    return repository.findById(id);
+  }
 }

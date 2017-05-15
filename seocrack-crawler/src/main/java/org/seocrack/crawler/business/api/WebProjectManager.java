@@ -13,4 +13,5 @@ public interface WebProjectManager {
   void updateProject(WebProject webProject);
   WebProject getProjectByName(String name);
   List<WebProject> getAllProjects();
+  WebProject getProjectById(long id);
 }
