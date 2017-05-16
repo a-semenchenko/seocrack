@@ -27,6 +27,8 @@ public class WebPage {
     private String description;
     private String keywords;
     private String url;
+    private String text;
+    private int textLength;
     @ManyToOne
     private WebProject webProject;
     @OneToMany(mappedBy = "webPage", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

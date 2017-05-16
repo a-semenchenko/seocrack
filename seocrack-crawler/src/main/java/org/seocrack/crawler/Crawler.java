@@ -22,15 +22,8 @@ import java.util.regex.Pattern;
  */
 public class Crawler extends WebCrawler {
 
-    @Autowired
-    private WebPageBusinessService webPageBusinessService;
-
-    @Autowired
-    private WebLinkBusinessService webLinkBusinessService;
-
     @Setter
     private WebProject project;
-    private List<WebPage> pages = new ArrayList<>();
 
     /**
      * Идентификатор краулера для разделения потоков
@@ -94,6 +87,8 @@ public class Crawler extends WebCrawler {
                 else
                     link.setDoFollow(true);
                 webPage.addOutLink(link);
+                webPage.setText(text);
+                webPage.setTextLength(text.length());
                 webPage.setWebProject(project);
                 link.setWebPage(webPage);
             }

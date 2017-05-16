@@ -14,15 +14,21 @@
             <input type="text" name="url" placeholder="URL"/>
             <input type="submit" value="add"/>
         </form>
-        <table>
+        <table class="table_dark">
             <th>WebProject</th>
+            <th>URL</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Keywords</th>
+            <th>Размер текста</th>
             <c:forEach items="${project.pages}" var="iterator" varStatus="rowStatus">
                 <tr>
                     <td><a href="/project/${iterator.url}">${iterator.url}</a></td>
                     <td>${iterator.title}</td>
                     <td>${iterator.description}</td>
                     <td>${iterator.keywords}</td>
-                    <%--<td>${iterator.webLink.size}</td>--%>
+                    <td>${iterator.textLength}</td>
+                    <%--<td>${iterator.webLink.size()}</td>--%>
                 </tr>
             </c:forEach>
         </table>
